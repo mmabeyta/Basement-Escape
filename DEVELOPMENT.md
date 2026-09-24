@@ -38,43 +38,37 @@ ROOM EXPLORATION
     +-------------------+-------------------+-------------------+-------------------+
     |                   |                   |                   |
     v                   v                   v                   v
-THREE-DRAWER          BUCKET            BINARY PANEL        TOY SHELF
+THREE-DRAWER          BUCKET             PALLETS            TOY SHELF
 TABLE                   |                   |                   |
     |                    |                   |                Five toys
-    |                    |                Five lights         with numbered
-    |                    |                Values:             square labels
-    |                    |                16 8 4 2 1             |
+    |                    |              Rotting pile          with numbered
+    |                    |              against wall          square labels
+    |                    |                   |                   |
     |                    |                   |                Can be examined
     |                    |                   |                before puzzle
     |                    |                   |                is solvable
     |                    |                   |
-    |                    v                   |
-    |                 BUCKET                 |
+    |                    v                   v
+    |                 BUCKET          EXAMINE PALLETS
     |                    |                   |
-    |             Contains water from        |
-    |             leaking pipe above         |
+    |             Contains water        Player shifts
+    |             from leaking pipe     the pallets
+    |             above                      |
+    |                    |                   v
+    |             Triangular notch       BINARY PANEL
+    |             at bottom = △          DISCOVERED
     |                    |                   |
-    |             Triangular notch           |
-    |             at bottom = △              |
+    |             Message asks:           Five lights
+    |             "HOW MANY DROPS         Values:
+    |              DID YOU HEAR?"         16 8 4 2 1
     |                    |                   |
-    |             Message asks:              |
-    |             "HOW MANY DROPS            |
-    |              DID YOU HEAR?"            |
+    |                    v                   v
+    |              EXAMINE PIPE       BINARY LIGHT PUZZLE
     |                    |                   |
-    |                    v                   |
-    |              EXAMINE PIPE              |
-    |                    |                   |
-    |                 8 drips                |
-    |                    |                   |
-    |              NUMBER = 8                |
+    |                 6 drips          Player experiments
+    |                    |             with buttons
+    |              NUMBER = 6                |
     |              SYMBOL = △                |
-    |                                        |
-    |                                        v
-    |                                BINARY LIGHT PUZZLE
-    |                                        |
-    |                               Player experiments
-    |                               with light pattern
-    |                                        |
     |                              +---------+---------+
     |                              |                   |
     |                           INCORRECT             19
@@ -85,8 +79,8 @@ TABLE                   |                   |                   |
     |                        Return black             CLICK
     |                                                  |
     |                                                  v
-    |                                             DRAWER 1
-    |                                             UNLOCKS
+    |                                             TOP DRAWER
+    |                                              UNLOCKS
     |                                                  |
     |                                                  v
     |                                         Photograph of
@@ -97,13 +91,13 @@ TABLE                   |                   |                   |
     |                                           SOLVABLE
     |
     |
-    +--> DRAWER 1
+    +--> TOP DRAWER
     |       Locked until binary puzzle is solved
     |
-    +--> DRAWER 2
+    +--> MIDDLE DRAWER
     |       Locked until star puzzle is solved
     |
-    +--> DRAWER 3
+    +--> BOTTOM DRAWER
             |
             v
           OPEN
@@ -168,27 +162,27 @@ TABLE                   |                   |                   |
                   DRAIN CLUE                                                  LIGHT SWITCH
                        |                                                             |
                 Can be examined                                              Odd circular
-                before toy puzzle,                                           base plate = ○
+                before toy puzzle,                                           backplate = ○
                 but clue cannot                                                     |
                 yet be solved                                                       |
                        |                                                      Player turns
-                Photograph shows:                                            room light OFF
-                DUCK + ROBOT                                                       |
-                       |                                                             v
-                Solved toy order:                                              STAR FIELD
-                Duck = 5                                                            |
-                Robot = 2                                                   Hidden among
+                Damp, faded photo                                            room light OFF
+                wedged beneath                                                      |
+                drain grate                                                          v
+                       |                                                       STAR FIELD
+                Photo shows:                                                        |
+                DUCK + ROBOT                                                Hidden among
                        |                                                     other stars
-                       v                                                            |
-                   5 + 2                                                     Diary clue:
-                       |                                                            |
-                       v                                            "Five points of light guide
-                  NUMBER = 7                                        the way at night.
-                  SYMBOL = □                                        Trace your finger along the sky,
-                                                                    and draw what the darkness hides."
-                                                                                   |
-                                                                                   v
-                                                                         Player identifies
+                Solved toy order:                                                   |
+                Duck = 5                                                    Diary clue:
+                Robot = 2                                                           |
+                       |                                            "Five points of light guide
+                       v                                             the way at night.
+                   5 + 2                                             Trace your finger along the sky,
+                       |                                             and draw what the darkness hides."
+                       v                                                           |
+                  NUMBER = 7                                                       v
+                  SYMBOL = □                                               Player identifies
                                                                               STAR
                                                                                    |
                                                                                    v
@@ -200,8 +194,8 @@ TABLE                   |                   |                   |
                                                                                  CLICK
                                                                                    |
                                                                                    v
-                                                                              DRAWER 2
-                                                                              UNLOCKS
+                                                                            MIDDLE DRAWER
+                                                                               UNLOCKS
                                                                                    |
                                                                                    v
                                                                               ORDER CLUE
@@ -219,10 +213,10 @@ TABLE                   |                   |                   |
                                                                          Start at bottom:
 
                                                                          △  ->  ○  ->  □
-                                                                         8      9      7
+                                                                         6      9      7
                                                                                    |
                                                                                    v
-                                                                             PADLOCK = 897
+                                                                             PADLOCK = 697
                                                                                    |
                                                                          +---------+---------+
                                                                          |                   |
@@ -243,9 +237,7 @@ TABLE                   |                   |                   |
                                                                                WIN ENDING          DARK ENDING
                                                                                   |
                                                                           Optional sound/bell
-
 ```
-
 
 ### Optional Features if time
 
@@ -291,9 +283,27 @@ Rocket, Robot, Horse, Teddy, Duck
 
 The star puzzle in my original Scratch project uses the mouse pointer to trace a shape in the stars. Here I've put in an ASCII illustration so the player can see where they need to go. Their input must say "star" in order to proceed. 
 
-The last main piece is the padlock. The player will have to solve all the puzzles in the room to find the digits 8, 9 and 7 and determine the order in which they belong. Each final number is associated with a shape through an environmental characteristic rather than an explicitly etched clue. The bucket has a triangular notch, the light switch has an unusual circular base plate, and the toy shelf uses square number labels. The final drawer clue tells the player to start at the bottom, establishing the order triangle, circle, square and therefore 8, 9, 7.
+The last main piece is the padlock. The player will have to solve all the puzzles in the room to find the digits 6, 9 and 7 and determine the order in which they belong. Each final number is associated with a shape through an environmental characteristic rather than an explicitly etched clue. The bucket has a triangular notch, the light switch has an unusual circular base plate, and the toy shelf uses square number labels. The final drawer clue tells the player to start at the bottom, establishing the order triangle, circle, square and therefore 6, 9, 7.
 
 ### Game State
+Need key words:
+door
+lock
+bucket
+pipe
+hatch
+table
+drawers
+pallets
+shelf
+horse
+rocket
+duck
+bear
+robot
+switch
+light
+drain
 
 ## Development Log
 

@@ -83,6 +83,10 @@ learned about strcmp() which compares two strings. It returns 0 if the strings a
 
 I learned that scanf("%s") stops reading at whitespace, while fgets() can read a full line containing spaces. This makes fgets() more suitable for commands such as “look north”.
 
+learned about the library #include<unistd.h> so I could use the sleep() function for stylistic game pausing
+
+Once a C program is split across multiple source files, all required .c files must be compiled and linked together using: clang [SOURCE FILE] [SOURCE FILE] -o [EXECUTABLE NAME]
+
 
 ### How I applied it
 

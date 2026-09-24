@@ -3,6 +3,9 @@
 #include <time.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include "directions.h"
+#include "objects.h"
 
 //function prototypes
 
@@ -13,19 +16,46 @@ void quitGame(char input[]);
 void convertToLowercase(char input[]);
 void getPlayerInput(char input[], int size);
 void help(char input[]);
+void pauseGame(int seconds);
+void gameOpen();
+
 
 //main program
 
 int main(void){
     titleScreen();
     gameInstructions();
+    gameOpen();
 
     while(1){
         char input[100];
         getPlayerInput(input, 100);
+        lookNorth(input);
+        lookSouth(input);
+        lookEast(input);
+        lookWest(input);
+        lookUp(input);
+        lookDown(input);
+        examineDoor(input);
+        examineHatch(input);
+        examineLock(input);
+        examineBucket(input);
+        examinePipe(input);
+        examineTable(input);
+        examineDrawers(input);
+        examinePallets(input);
+        examineShelf(input);
+        examineHorse(input);
+        examineRocket(input);
+        examineDuck(input);
+        examineBear(input);
+        examineRobot(input);
+        examineSwitch(input);
+        examineLight(input);
+        examineDrain(input);
+        examinePanel(input);
         help(input);
         quitGame(input);
-        printf("%s\n", input); //temporary print line for testing
 
     }
     
@@ -50,9 +80,59 @@ void waitForEnter(void){ //waits for enter to be pressed
 }
 
 void gameInstructions(void){ //print the game instructions
-    printf("       HOW TO PLAY\n\nExplore the basement by typing commands.\n\nLook around using:\n\nlook north\nlook east\nlook south\nlook west\n\nOther useful commands:\n\nexamine [object]\nopen [object]\nread [object]\nuse [object]\n\nhelp: to show this message again\nquit: to quit the game\n\n");
+    printf("       HOW TO PLAY\n\nExplore the basement by typing commands.\n\nLook around using:\n\nlook north\nlook east\nlook south\nlook west\nlook up\nlook down\n\nOther useful commands:\n\nexamine [object]\nopen [object]\nread [object]\nuse [object]\n\nhelp: to show this message again\nquit: to quit the game\n\n");
     printf("Press ENTER to continue...\n\n\n\n");
     waitForEnter();
+}
+
+void pauseGame(int seconds){
+    sleep(seconds);
+
+}
+
+void gameOpen(void){
+    printf("Drip...\n\n");
+    pauseGame(1);
+    printf("Drip...\n\n");
+    pauseGame(1);
+    printf("Drip...\n\n");
+    pauseGame(1);
+    printf("The sound cuts through the darkness.\n\n");
+    pauseGame(4);
+    printf("Drip...\n\n");
+    pauseGame(1);
+    printf("Drip...\n\n");
+    pauseGame(1);
+    printf("Drip...\n\n");
+    pauseGame(1);
+    printf("Slowly, you become aware of it.\n\n");
+    pauseGame(4);
+    printf("Water.\n\n");
+    pauseGame(2);
+    printf("You open your eyes.\n\n");
+    pauseGame(3);
+    printf("Nothing changes.\n\n");
+    pauseGame(2);
+     printf("You try to remember where you are.\n\n");
+    pauseGame(4);
+    printf("Nothing.\n\n");
+    pauseGame(1);
+    printf("Panic sets in.\n\n");
+    pauseGame(1);
+    printf("You call out.\n\n");
+    pauseGame(1);
+    printf("Still nothing.\n\n");
+    pauseGame(1);
+    printf("Then—\n\n");
+    pauseGame(1);
+    printf("CLICK!\n\n");
+    pauseGame(2);
+    printf("A low light flickers to life overhead.\n\n");
+    pauseGame(1);
+     printf("Your eyes struggle to adjust to the light.\n\n");
+    pauseGame(1);
+    printf("Look around if you are brave enough.\n\n");
+   
 }
 
 void getPlayerInput(char input[], int size){ //take player input and remove the \n if any, then call function convertToLowercase.
@@ -70,6 +150,7 @@ void convertToLowercase(char input[]){ //converts the player input into lower ca
         input[i] = tolower(input[i]);
     }
 }
+
 
 void help(char input[]){ //this displays the game instructions when help is typed
       if (strcmp(input, "help") == 0){
