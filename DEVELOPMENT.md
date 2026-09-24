@@ -302,4 +302,5 @@ The last main piece is the padlock. The player will have to solve all the puzzle
 - Learned the difference between Git and GitHub.
 - Created initial project structure.
 - Need to investigate how to measure elapsed time in C.
+- Built the opening, player input, quit and help commands
 
