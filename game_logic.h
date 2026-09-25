@@ -13,7 +13,13 @@ extern bool diaryFound;
 extern bool toyPuzzleSolved;
 extern bool toyPuzzleDiscovered; 
 extern bool starsDiscovered;
+extern bool roomDark;
+extern bool starsExamined;
+extern bool starPuzzleSolved;
+extern bool binaryPuzzleSolved;
 void pushButton(char input[]);
 void checkBinaryPuzzle(void);
 void checkToyPuzzle(char input[]);
 void pauseGame(int seconds);
+void checkStarPuzzle(char input[]);
+

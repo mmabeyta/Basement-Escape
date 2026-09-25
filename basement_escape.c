@@ -32,6 +32,19 @@ int main(void){
     while(1){
         char input[100];
         getPlayerInput(input, 100);
+        if (roomDark == true){
+            checkStarPuzzle(input);
+            help(input);
+            quitGame(input);
+            if (strcmp(input, "examine switch") == 0 || strcmp(input, "examine stars") == 0){
+            examineSwitch(input);
+            examineStars(input);
+            }
+            else if (strncmp(input, "examine ", 8) == 0 || strncmp(input, "push ", 5) == 0 || strncmp(input, "look ", 5) == 0 || strncmp(input, "read ", 5) == 0 || strncmp(input, "open ", 5) == 0 || strncmp(input, "arrange ", 8) == 0){
+                printf("It's too dark to see anything.\n");
+            }
+        }
+        else{
         lookNorth(input);
         lookSouth(input);
         lookEast(input);
@@ -59,9 +72,9 @@ int main(void){
         readDiary(input);
         pushButton(input);
         checkToyPuzzle(input);
-        examineStars(input);
         help(input);
         quitGame(input);
+        }
 
     }
     
@@ -91,7 +104,7 @@ void gameInstructions(void){ //print the game instructions
     waitForEnter();
 }
 
-void gameOpen(void){
+void gameOpen(void){ //print the opening scene
     printf("Drip...\n\n");
     pauseGame(1);
     printf("Drip...\n\n");
@@ -151,7 +164,6 @@ void convertToLowercase(char input[]){ //converts the player input into lower ca
         input[i] = tolower(input[i]);
     }
 }
-
 
 void help(char input[]){ //this displays the game instructions when help is typed
       if (strcmp(input, "help") == 0){

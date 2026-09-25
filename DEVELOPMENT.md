@@ -279,6 +279,7 @@ The last main piece is the padlock. The player will have to solve all the puzzle
 - day 19
 - arrange
 - stars
+- star
 
 ### Game State
 
@@ -292,6 +293,10 @@ Boolean variables are used to track the player's progress and control which inte
 - `toyPuzzleDiscovered` - enables the toy puzzle after the relevant diary entry has been read.
 - `toyPuzzleSolved` - tracks completion of the toy arrangement puzzle.
 - `starsDiscovered` - enables interaction with the stars after the room becomes dark.
+- `roomDark` - tracks whether the room is dark and restricts player commands while the star puzzle is active.
+- `binaryPuzzleSolved` - tracks completion of the binary-panel puzzle and prevents further button changes after it has been solved.
+- `starPuzzleSolved` - tracks completion of the star puzzle and prevents it from being solved repeatedly.
+- `starsExamined` - tracks whether the player has examined the visible star field and enables star-puzzle answers.
 
 ## Development Log
 
@@ -313,5 +318,10 @@ Boolean variables are used to track the player's progress and control which inte
 - Revised drawer contents and photograph clues.
 - Simplified the final padlock clue system by placing the symbols directly on the lock.
 - Added pauseGame() to game logic for timed narrative output.
-- Added initial examine stars interaction.
+- Completed the ASCII star puzzle and added shape-based player input.
+- Restricted normal room interactions while the room is dark.
+- Added solved states to the binary, toy and star puzzles to prevent completed puzzles from being solved repeatedly.
+- Added post-solution descriptions so completed puzzles remain consistent when examined again.
+- Added a completed ASCII star pattern for the solved star puzzle.
+- Added game-state progression from the star puzzle to unlocking the middle drawer.
 

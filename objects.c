@@ -30,7 +30,7 @@ void examineLock(char input[]){
 void examineBucket(char input[]){
     if (strcmp(input, "examine bucket") == 0){
         printf("You see an old wooden bucket. Inside, it's empty except for a few drops of water from the leaking pipe.\n");
-        printf("A small triangular notch has been cut into the bottom.\n");
+        printf("A small triangular notch has been cut into the bottom.\n\n");
     }
 }
 
@@ -71,7 +71,7 @@ void examineDrawers(char input[]){
         else{
             printf("The middle drawer slides open.\n");
             printf("Inside, scratched into the wood, you see:\n\n");
-            printf("\033[1m○ = 7\033[0m\n\n");
+            printf("\033[1m7\033[0m\n\n");
         }
     }
 
@@ -166,7 +166,7 @@ void examinePallets(char input[]){
         panelDiscovered = true;
         }
         else {
-        printf("The rotting pallets have been pushed aside. The panel behind them is exposed.\n");
+        printf("The rotting pallets have been pushed aside. The \033[1mpanel\033[0m behind them is exposed.\n");
          }
         
     }
@@ -175,15 +175,20 @@ void examinePallets(char input[]){
 
 void examineShelf(char input[]){
     if (strcmp(input, "examine shelf") == 0){
-
-         if (toyPuzzleDiscovered == true){
+        if (toyPuzzleSolved == true){
+            printf("You see 5 small toys sitting in a row on the shelf.\n");
+            printf("Each has its own square numbered label from 1-5.\n");
+            printf("They now sit in the order you arranged them:\n");
+            printf("Rocket, Robot, Horse, Bear, Duck.\n");
+            printf("The toys seem fixed firmly in place.\n\n");
+        }
+         else if (toyPuzzleDiscovered == true){
             printf("You see 5 small toys sitting in a row on the shelf.\n");
             printf("A \033[1mhorse\033[0m, a \033[1mrocket\033[0m, a rubber \033[1mduck\033[0m, ");
             printf("a teddy \033[1mbear\033[0m and a \033[1mrobot\033[0m.\n");
             printf("Each has its own square numbered label from 1-5.\n\n");
             printf("Perhaps Tommy knew where these toys belonged.\n");
             printf("To rearrange them, type \033[1marrange\033[0m followed by all five toy names in order.\n\n");
-            
         }
         else{
             printf("You see 5 small toys sitting in a row on the shelf.\n");
@@ -226,8 +231,18 @@ void examineRobot(char input[]){
 }
 
 void examineSwitch(char input[]){
-    if (strcmp(input, "examine switch") == 0){
+    if (strcmp(input, "examine switch") == 0 && starsDiscovered == false){
         printf("You flick the switch, but nothing happens.\n\n");
+    }
+    else if (strcmp(input, "examine switch") == 0 && roomDark == true){
+        printf("You flick the switch, and the light fades back to life.\n\n");
+        roomDark = false;
+    }
+    else if (strcmp(input, "examine switch") == 0 && starsDiscovered == true && roomDark == false){
+        printf("The light dies. The glowing \033[1mstars\033[0m slowly reappear around you.\n\n");
+        printf("On the wall, the circular plate surrounding the \033[1mswitch\033[0m begins to glow faintly.\n\n");
+        roomDark = true;
+
     }
 }
 
@@ -239,7 +254,7 @@ void examineLight(char input[]){
 
 void examinePanel(char input[]){
     if (strcmp(input, "examine panel") == 0){
-        if(panelDiscovered == true){
+        if(panelDiscovered == true && binaryPuzzleSolved == false){
             printf("You see a metal panel with five lights arranged in a row.\n");
             printf("Beneath each light is a \033[1mbutton\033[0m marked with a number.\n\n");
 
@@ -284,6 +299,11 @@ void examinePanel(char input[]){
             printf("BUTTONS:\t");
             printf("\033[1m16\t 8\t 4\t 2\t 1\033[0m\n\n");
         }
+        else if (panelDiscovered == true && binaryPuzzleSolved == true){
+            printf("LIGHTS:\t\tOn\tOff\tOff\tOn\tOn\n");
+            printf("BUTTONS:\t\t16\t 8\t 4\t2\t1\n\n");
+            printf("The buttons no longer respond when pressed.\n\n");
+        }
     }
 }
 
@@ -299,8 +319,54 @@ void examineDrain(char input[]){
 }
 
 void examineStars(char input[]){
-    if (strcmp(input, "examine stars") == 0 && starsDiscovered == true){
-        printf("ASCII sttring.\n\n");
+    if (strcmp(input, "examine stars") == 0 && starsDiscovered == true && starPuzzleSolved == false){
+        printf("0                0                                            0                 \n");
+        printf("                0 0          0                    0          0 0           0    \n");
+        printf("      0    0     0                      0                     0           0 0   \n");
+        printf("     0 0                              0 0 0                                0    \n");
+        printf("      0                      0          0           0                           \n");
+        printf("                   0        0 0                    0 0                          \n");
+        printf("                             0          0           0            0              \n");
+        printf("                                                                                \n");
+        printf("    0                                                                      0    \n");
+        printf("                                        0         0                             \n");
+        printf("                    0        0         0 0                  0                   \n");
+        printf("                  0 0 0                 0                 0 0 0                 \n");
+        printf("          0         0                                       0       0           \n");
+        printf("         0 0                      0                0                    0       \n");
+        printf("          0                      0 0              0 0                  0 0      \n");
+        printf("   0                              0                0                    0       \n");
+        printf("                                                                                \n");
+        printf("                    0                    0                     0                \n");
+        printf("          0                                                                 0   \n");
+        printf("                             0                    0                             \n");
+        printf("  0                        0 0 0                0 0 0                           \n");
+        printf(" 0 0               0         0                    0          0                0 \n");
+        printf("  0               0 0                                       0 0        0     0 0\n");
+        printf("           0       0                     0                   0                0 \n");
+        printf("\nStudy the stars carefully. Connect the ones that matter. What shape do they make?\n");
+        printf("\n\n");
+        starsExamined = true;
+    }
+      else if ((strcmp(input, "examine stars") == 0) && starsExamined == true && starPuzzleSolved == true){
+        printf("                0                \n");
+        printf("               000               \n");
+        printf("               0 0               \n");
+        printf("              00 00              \n");
+        printf("              00   0             \n");
+        printf("              0    00            \n");
+        printf("000000000000000000000000000000000\n");
+        printf("  000      00       0       000  \n");
+        printf("     00    0        00    00     \n");
+        printf("       00000         0 000       \n");
+        printf("         000         00          \n");
+        printf("         00 00    000 00         \n");
+        printf("         0     000     0         \n");
+        printf("        00   000 00    00        \n");
+        printf("       00  00       00  0        \n");
+        printf("       0000           0000       \n");
+        printf("      00                 00      \n");  
+        printf("\nThe five-pointed star you traced earlier quietly shines in the dark.\n\n");
     }
 }
 

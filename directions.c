@@ -17,7 +17,7 @@ void lookNorth(char input[]){ //this prints the description of the north directi
 void lookEast(char input[]){ //this prints the description of the East direction
     if (strcmp(input, "look east") == 0){
         printf("You see a withered wooden side \033[1mtable\033[0m with 4 legs and 3 drawers.\n");
-        printf("Next to it is a heap of rotting old \033[1mpallets\033[0m, some in tact and some torn apart.\n\n");
+        printf("Next to it is a heap of rotting old \033[1mpallets\033[0m, some intact and some torn apart.\n\n");
     }
 }
 
@@ -39,7 +39,7 @@ void lookWest(char input[]){ //this prints the description of the West direction
 
 void lookUp(char input[]){ //this prints the description of the Up direction
     if (strcmp(input, "look up") == 0){
-        printf("You see the low hanging \033[1mlight\033[0m bulb dangling from a thin cord.\n");
+        printf("You see the low-hanging \033[1mlight\033[0m bulb dangling from a thin cord.\n");
         printf("Near the north wall you see the \033[1mpipe\033[0m leading out of the ceiling.\n\n");
     }
 }
