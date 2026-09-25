@@ -122,3 +122,5 @@ Monica Abeyta
 ## Copyright
 
 © 2026 Monica Abeyta. All rights reserved.
+
+This project is publicly available for viewing and assessment purposes. No permission is granted to copy, modify, distribute, or reuse the source code or other project materials except where permitted by law.
