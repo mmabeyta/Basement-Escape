@@ -16,7 +16,7 @@ I had not previously used Git or GitHub and needed to understand and learn how t
 
 ### What I learned
 
-I learned the difference between Git and Github. Git is stored on my computer which tracks version changes and GitHub is the online repository that I push my git to in order to share my project with others.
+I learned the difference between Git and GitHub. Git is stored on my computer which tracks version changes and GitHub is the online repository that I push my git to in order to share my project with others.
 
 I learned several terminal commands:
 
@@ -42,13 +42,11 @@ echo ".DS_Store" >> .gitignore echo ".DS_Store" → produce the text .DS_Store >
 
 I also learned that Git records an author name and email with each commit, and if these aren’t configured Git may infer them from the computer.
 
-
-
 ### How I applied it
 
-After doing a little research I was able to initilize Git for my project.
+After doing some research I was able to initialize Git for my project.
 
----
+---------------------------------------
 
 ## ASCII Art
 
@@ -69,7 +67,9 @@ I learned that visual designs need to be simplified when represented as ASCII ar
 
 I used ASCII art for the star puzzle.
 
-## Syntax I learned in C
+---------------------------------------
+
+## C Research and New Syntax
 
 I learned about #include <ctype.h>, which provides character-handling functions such as tolower().
 
@@ -81,7 +81,7 @@ I learned about #include <stdlib.h>, which provides the exit() function. exit(0)
 
 I learned about strcmp() which compares two strings. It returns 0 if the strings are equal, a negative value if str1 is less than str2, and a positive value if str1 is greater than str2.
 
-I learned that strncmp() can compare only the first specified number of characters in a string. This allowed me to recognise a general command while still using strcmp() to check for a specific correct input. For example, any input beginning with arrange can be recognised as an attempt, while only the exact correct arrangement is accepted as the solution. Another use I did with it was: I used strncmp() to recognise commands beginning with examine , push , look , read , open  and arrange  while the room is dark.
+I learned that strncmp() can compare only the first specified number of characters in a string. This allowed me to recognise a general command while still using strcmp() to check for a specific correct input. For example, any input beginning with "arrange" can be recognised as an attempt, while only the exact correct arrangement is accepted as the solution. Another use for it was using strncmp() to recognise commands beginning with examine , push , look , read , open , enter  and arrange  while the room is dark, so the game can return an “It’s too dark to see anything.” message.
 
 I learned that scanf("%s") stops reading at whitespace, while fgets() can read a full line containing spaces. This makes fgets() more suitable for commands such as “look north”.
 
@@ -93,10 +93,19 @@ I learned that boolean variables can be used to store the state of different par
 
 I also learned how an if, else if, else chain can represent mutually exclusive game states. This prevents multiple descriptions or behaviours from running for the same input. For example, an object can behave differently depending on whether its puzzle is undiscovered, discovered but unsolved, or solved.
 
+I learned the difference between = and == in conditions. A single = assigns a value to a variable, while == compares two values. I initially wrote while(playerWins = false), which assigned false to playerWins instead of checking whether it was false.
+
+I learned that a boolean game-state variable can be used as the condition of the main game loop. I originally used while(1) to keep the game running indefinitely, but changed this to while(playerWins == false). When the player escapes, playerWins becomes true and the main game loop ends.
+
+I learned that && is evaluated before || in C. When both operators are used in the same condition, parentheses can be used to make the intended logic clearer. I also found that separating different player commands into an if, else if chain could sometimes make the game logic easier to understand.
+
+I used external playtesting to check the puzzle logic as well as the program itself. This revealed that although the game was running correctly, the number clues and symbols for the final padlock were inconsistent. I corrected the mappings so triangle = 6, square = 9 and circle = 7, producing the intended combination 697.
+
+When researching unfamiliar syntax and tools, I compared information from documentation, tutorials and ChatGPT where necessary. I then tested what I had learned by applying it to the project, compiling the program and checking that the resulting behaviour matched what I expected. I did not consider a suggestion successful just because it compiled; I also tested whether it behaved correctly during gameplay.
 
 ### How I applied it
 
-I created a reusable player input function that reads full commands, removes the newline and converts the input to lowercase. I then used strcmp() to implement help and quit commands inside the main game loop.
+I created a reusable player input function using fgets() that reads full commands, removes the newline and converts the input to lowercase. I then used strcmp() to implement help and quit commands inside the main game loop.
 
 “How do I detect all possible wrong arrangements without writing every combination?” My research led me to use strncmp(), which provided the necessary tool to recognise any input beginning with "arrange " while still using strcmp() to check for the exact correct solution.
 
@@ -109,5 +118,16 @@ https://www.geeksforgeeks.org/c/tolower-function-in-c/
 https://www.geeksforgeeks.org/cpp/ctype-hcctype-library-in-c-c-with-examples/
 https://www.geeksforgeeks.org/c/strcmp-in-c/
 https://www.geeksforgeeks.org/cpp/difference-strncmp-strcmp-c-cpp/
+
+---------------------------------------
+
+## End Summary
+
+I really liked this challenge. Writing a game was one of the first things I wanted to do once my MSc taught me enough programming principles to implement one. I’m only about four weeks into my MSc, and with a lot of research, YouTube tutorials and help from ChatGPT when I was really stuck, I was able to put all of this together. It is my very first major program; up until now, I have only written small coding examples for my MSc. Thanks EAS for this opportunity, and I hope you enjoy playing it as much as I enjoyed creating it.
+
+
+
+
+
 
 

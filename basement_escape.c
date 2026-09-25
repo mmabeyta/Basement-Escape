@@ -19,7 +19,7 @@ void quitGame(char input[]);
 void convertToLowercase(char input[]);
 void getPlayerInput(char input[], int size);
 void help(char input[]);
-void gameOpen();
+void gameOpen(void);
 
 
 //main program
@@ -29,7 +29,7 @@ int main(void){
     gameInstructions();
     gameOpen();
 
-    while(1){
+    while(playerWins == false){
         char input[100];
         getPlayerInput(input, 100);
         if (roomDark == true){
@@ -40,7 +40,7 @@ int main(void){
             examineSwitch(input);
             examineStars(input);
             }
-            else if (strncmp(input, "examine ", 8) == 0 || strncmp(input, "push ", 5) == 0 || strncmp(input, "look ", 5) == 0 || strncmp(input, "read ", 5) == 0 || strncmp(input, "open ", 5) == 0 || strncmp(input, "arrange ", 8) == 0){
+            else if (strncmp(input, "examine ", 8) == 0 || strncmp(input, "push ", 5) == 0 || strncmp(input, "look ", 5) == 0 || strncmp(input, "read ", 5) == 0 || strncmp(input, "open ", 5) == 0 || strncmp(input, "arrange ", 8) == 0 || strncmp(input, "enter ", 6) == 0){
                 printf("It's too dark to see anything.\n");
             }
         }
@@ -72,12 +72,11 @@ int main(void){
         readDiary(input);
         pushButton(input);
         checkToyPuzzle(input);
+        checkPadLock(input);
         help(input);
         quitGame(input);
         }
-
     }
-    
     return 0;
 }
 
@@ -99,7 +98,7 @@ void waitForEnter(void){ //waits for enter to be pressed
 }
 
 void gameInstructions(void){ //print the game instructions
-    printf("       HOW TO PLAY\n\nExplore the basement by typing commands. \nDo not use punctuation and only type one space in between each word.\n\nLook around using:\n\nlook north\nlook east\nlook south\nlook west\nlook up\nlook down\n\nOther useful commands:\n\nexamine [object]\nopen [object]\nread [object]\npush [object]\n\nhelp: to show this message again\nquit: to quit the game\n\n");
+    printf("       HOW TO PLAY\n\nExplore the basement by typing commands. \nDo not use punctuation and only type one space in between each word.\n\nLook around using:\n\nlook north\nlook east\nlook south\nlook west\nlook up\nlook down\n\nOther useful commands:\n\nexamine [object]\nopen [object]\nread [object]\npush [object]\nenter [number]\n\nhelp: to show this message again\nquit: to quit the game\n\n");
     printf("Press ENTER to continue...\n\n\n\n");
     waitForEnter();
 }

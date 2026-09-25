@@ -8,7 +8,7 @@ void lookNorth(char input[]){ //this prints the description of the north directi
       if (strcmp(input, "look north") == 0){
         printf("You see a large metal \033[1mdoor\033[0m in the center of the wall.\n");
         printf("A small metal viewing \033[1mhatch\033[0m sits at eye level. Its cover is closed.\n");
-        printf("A large pad \033[1mlock\033[0m with 3 dials.\n");
+        printf("A large pad \033[1mlock\033[0m with 3 dials, tightly secures the \033[1mdoor\033[0m.\n");
         printf("On the floor to the right near a dark corner sits a \033[1mbucket\033[0m. \n");
         printf("Just above is a long \033[1mpipe\033[0m leading up into the ceiling. \n\n");
     }

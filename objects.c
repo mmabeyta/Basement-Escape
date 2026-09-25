@@ -4,12 +4,55 @@
 #include "objects.h"
 #include "game_logic.h"
 
+//functions for each object in the game. Some provide game state progression after successful player interactions and others provide environmental story information.
 
-
-void examineDoor(char input[]){
-    if (strcmp(input, "examine door") == 0){
+void examineDoor(char input[]){ //this function will test the door for the different inputs and game states. This is where the final ending is coded.
+    if (strcmp(input, "examine door") == 0 && padLockLocked == true){
         printf("You bang on the door and it is solid. It will not yield to you at this time.\n\n");
-}
+    }
+    else if (strcmp(input, "open door") == 0 && padLockLocked == true){
+        printf("You try the handle, but the door doesn't budge.\n\n");
+    }
+    else if (strcmp(input, "examine door") == 0 && padLockLocked == false){
+        printf("The heavy \033[1mdoor\033[0m stands before you. With the padlock removed, nothing prevents you from opening it.\n\n");
+    }
+    else if (strcmp(input, "open door") == 0 && padLockLocked == false){
+        printf("You wrap your hand around the cold metal handle.\n");
+        printf("For a moment, you hesitate.\n\n");
+        pauseGame(5);
+
+        printf("Then you turn it.\n\n");
+        pauseGame(1);
+
+        printf("The \033[1mdoor\033[0m groans open.\n");
+        printf("A rush of cool air spills into the basement.\n\n");
+        pauseGame(4);
+
+        printf("You step through the doorway and climb the stairs beyond.\n");
+        printf("With every step, the basement disappears further behind you.\n\n");
+        pauseGame(5);
+
+        printf("At the top, you push through another door.\n\n");
+        pauseGame(2);
+
+        printf("Fresh air.\n");
+        printf("Open sky.\n");
+        printf("Freedom.\n\n");
+        pauseGame(2);
+
+        printf("You look back at the building behind you.\n");
+        printf("For now, you have more questions than answers.\n\n");
+        pauseGame(4);
+
+        printf("\033[1m    CONGRATULATIONS!!!\033[0m\n");
+        printf("\033[1mYOU ESCAPED THE BASEMENT!!!\033[0m\n\n");
+
+        pauseGame(4);
+
+        printf("\033[1m       GAME OVER!!!\033[0m\n\n");
+        pauseGame(5);
+        playerWins = true;
+    }
 }
 
 void examineHatch(char input[]){
@@ -18,18 +61,22 @@ void examineHatch(char input[]){
     }
 }
 
-void examineLock(char input[]){
-    if (strcmp(input, "examine lock") == 0){
+void examineLock(char input[]){ 
+    if (strcmp(input, "examine lock") == 0 && padLockLocked == true){
         printf("You see a large metal padlock. Three dials set to 0, 0, 0 stare back at you.\n");
         printf("The dials move with ease, but what numbers belong there?\n\n");
         printf("Scratched into the metal beneath the dials are three crude symbols:\n\n");
-        printf("△   ○   □\n\n");
+        printf("△   □   ○\n\n");
+        printf("When you are ready \033[1menter\033[0m 3 digits to try to unlock the lock.\n\n");
+    }
+     else if (strcmp(input, "examine lock") == 0 && padLockLocked == false){
+       printf("The padlock is already open and lying on the floor where you left it.\n\n");
     }
 }
 
 void examineBucket(char input[]){
     if (strcmp(input, "examine bucket") == 0){
-        printf("You see an old wooden bucket. Inside, it's empty except for a few drops of water from the leaking pipe.\n");
+        printf("You see an old wooden bucket. Inside, it's empty except for a few drops of water from the leaking \033[1mpipe\033[0m.\n");
         printf("A small triangular notch has been cut into the bottom.\n\n");
     }
 }
@@ -58,7 +105,7 @@ void examineDrawers(char input[]){
         else{
             printf("The top drawer slides open with a rusty scrape.\n");
             printf("Inside is a small, faded photograph.\n\n");
-            printf("The photograph shows two familiar toys: the duck and the robot.\n");
+            printf("The photograph shows two familiar toys: the duck and the bear.\n");
             printf("Someone has drawn a crude + sign between them in black ink.\n\n");
         }
     }
@@ -82,7 +129,7 @@ void examineDrawers(char input[]){
     }
 }
 
-void readDiary(char input[]){
+void readDiary(char input[]){ //this is the main clue diary from the character Tommy. It provides most of the clues needed for the game and one clue will change game state after reading it
     if (diaryFound == true){
 
         if (strcmp(input, "read diary") == 0){
@@ -149,7 +196,7 @@ void readDiary(char input[]){
 
         else if (strcmp(input, "read day 19") == 0){
         printf("\nDAY 19\n\n");
-        printf("Today was the day.\n");
+        printf("Today is the day!!!\n");
         printf("I finally figured out the lights.\n");
         printf("When I heard the click, I almost cried.\n");
         printf("They said I can go home now.\n\n");
@@ -157,7 +204,7 @@ void readDiary(char input[]){
         }
     }
 
-void examinePallets(char input[]){
+void examinePallets(char input[]){ //examining the pallets will reveal the binary puzzle so game state will change when this is examined
     if (strcmp(input, "examine pallets") == 0){
         if(panelDiscovered == false){
         printf("You pull at the rotting wooden pallets. Several pieces crumble away in your hands.\n");
@@ -173,7 +220,7 @@ void examinePallets(char input[]){
  
 }
 
-void examineShelf(char input[]){
+void examineShelf(char input[]){// this function has different outputs for the toy puzzle depending on the game state
     if (strcmp(input, "examine shelf") == 0){
         if (toyPuzzleSolved == true){
             printf("You see 5 small toys sitting in a row on the shelf.\n");
@@ -230,7 +277,7 @@ void examineRobot(char input[]){
     }
 }
 
-void examineSwitch(char input[]){
+void examineSwitch(char input[]){// this function has different outputs for the light switch depending on the game state
     if (strcmp(input, "examine switch") == 0 && starsDiscovered == false){
         printf("You flick the switch, but nothing happens.\n\n");
     }
@@ -252,7 +299,7 @@ void examineLight(char input[]){
     }
 }
 
-void examinePanel(char input[]){
+void examinePanel(char input[]){ //this function prints and controls the buttons on the light panel for the binary puzzle. it has different output depending on game state and player input.
     if (strcmp(input, "examine panel") == 0){
         if(panelDiscovered == true && binaryPuzzleSolved == false){
             printf("You see a metal panel with five lights arranged in a row.\n");
@@ -301,7 +348,7 @@ void examinePanel(char input[]){
         }
         else if (panelDiscovered == true && binaryPuzzleSolved == true){
             printf("LIGHTS:\t\tOn\tOff\tOff\tOn\tOn\n");
-            printf("BUTTONS:\t\t16\t 8\t 4\t2\t1\n\n");
+            printf("BUTTONS:\t16\t 8\t 4\t2\t1\n\n");
             printf("The buttons no longer respond when pressed.\n\n");
         }
     }
@@ -318,7 +365,7 @@ void examineDrain(char input[]){
     }
 }
 
-void examineStars(char input[]){
+void examineStars(char input[]){// this function changes game state and also prints the 2 ASCII art pieces I used.
     if (strcmp(input, "examine stars") == 0 && starsDiscovered == true && starPuzzleSolved == false){
         printf("0                0                                            0                 \n");
         printf("                0 0          0                    0          0 0           0    \n");
