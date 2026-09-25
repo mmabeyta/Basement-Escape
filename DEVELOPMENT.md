@@ -18,225 +18,187 @@ For the planning I wrote the story, game concepts and flow chart before translat
 
 This is the flow chart. The chart shows dependencies, not a mandatory player route. The bucket can be solved immediately. The player can discover the drain before understanding DUCK + ROBOT. They can inspect the toys before they’re able to solve them. They can read diary entries in any order. That’s what gives us the Zork-like exploration rather than making the game one long sequence of prompts.
 
-Original Flow Chart
+Flow Chart
 
 ```text
 START GAME
     |
     +--> Display title / introduction
-    +--> (OPTIONAL) Player name input
     +--> Player wakes in darkness
-    +--> Establish sound of dripping water
+    +--> Sound of dripping water
     +--> Basement light comes on
     +--> Start hidden timer
     |
     v
 ROOM EXPLORATION
     |
-    |   Player can examine/interact with the room freely.
+    |   Player can freely examine and interact with the room.
+    |   Puzzle dependencies do not represent a mandatory route.
     |
-    +-------------------+-------------------+-------------------+-------------------+
-    |                   |                   |                   |
-    v                   v                   v                   v
-THREE-DRAWER          BUCKET             PALLETS            TOY SHELF
-TABLE                   |                   |                   |
-    |                    |                   |                Five toys
-    |                    |              Rotting pile          with numbered
-    |                    |              against wall          square labels
-    |                    |                   |                   |
-    |                    |                   |                Can be examined
-    |                    |                   |                before puzzle
-    |                    |                   |                is solvable
-    |                    |                   |
-    |                    v                   v
-    |                 BUCKET          EXAMINE PALLETS
-    |                    |                   |
-    |             Contains water        Player shifts
-    |             from leaking pipe     the pallets
-    |             above                      |
-    |                    |                   v
-    |             Triangular notch       BINARY PANEL
-    |             at bottom = △          DISCOVERED
-    |                    |                   |
-    |             Message asks:           Five lights
-    |             "HOW MANY DROPS         Values:
-    |              DID YOU HEAR?"         16 8 4 2 1
-    |                    |                   |
-    |                    v                   v
-    |              EXAMINE PIPE       BINARY LIGHT PUZZLE
-    |                    |                   |
-    |                 6 drips          Player experiments
-    |                    |             with buttons
-    |              NUMBER = 6                |
-    |              SYMBOL = △                |
-    |                              +---------+---------+
-    |                              |                   |
-    |                           INCORRECT             19
-    |                              |                   |
-    |                        Lights flash          Lights turn
-    |                        violent red           green
-    |                              |                   |
-    |                        Return black             CLICK
-    |                                                  |
-    |                                                  v
-    |                                             TOP DRAWER
-    |                                              UNLOCKS
-    |                                                  |
-    |                                                  v
-    |                                         Photograph of
-    |                                         Tommy + toys
-    |                                                  |
-    |                                                  v
-    |                                         TOY PUZZLE NOW
-    |                                           SOLVABLE
-    |
-    |
-    +--> TOP DRAWER
-    |       Locked until binary puzzle is solved
-    |
-    +--> MIDDLE DRAWER
-    |       Locked until star puzzle is solved
-    |
-    +--> BOTTOM DRAWER
-            |
-            v
-          OPEN
-            |
-            v
-       TOMMY'S DIARY
-            |
-       Damaged diary:
-       many pages faded
-       or ripped out
-            |
-       Surviving entries:
-       Day 4
-       Day 8
-       Day 12
-       Day 16
-       Day 19
-            |
-       Player chooses which
-       entry to read
-            |
-       Contains cryptic clues
-       for the basement puzzles
-            |
-       Day 12 contains:
-            |
-            v
-   THE TWILIGHT TOY DERBY
-            |
-            |         (The diary can be read before
-            |          the toy puzzle is solvable.)
-            |
-            +-----------------------------------------+
-                                                      |
-                                                      v
-                                                TOY PUZZLE
-                                                      |
-                                          Player arranges toys
-                                          using numbered
-                                          square labels
-                                                      |
-                                          Correct finishing order:
-                                                      |
-                                               1. Rocket
-                                               2. Robot
-                                               3. Horse
-                                               4. Teddy
-                                               5. Duck
-                                                      |
-                                         +------------+------------+
-                                         |                         |
-                                      INCORRECT                  CORRECT
-                                         |                         |
-                                  Lights flicker               Light switch
-                                  giving brief                 becomes active
-                                  glimpses of                       |
-                                  star field                        |
-                                                                    |
-                       +--------------------------------------------+----------------+
-                       |                                                             |
-                       v                                                             v
-                  DRAIN CLUE                                                  LIGHT SWITCH
-                       |                                                             |
-                Can be examined                                              Odd circular
-                before toy puzzle,                                           backplate = ○
-                but clue cannot                                                     |
-                yet be solved                                                       |
-                       |                                                      Player turns
-                Damp, faded photo                                            room light OFF
-                wedged beneath                                                      |
-                drain grate                                                          v
-                       |                                                       STAR FIELD
-                Photo shows:                                                        |
-                DUCK + ROBOT                                                Hidden among
-                       |                                                     other stars
-                Solved toy order:                                                   |
-                Duck = 5                                                    Diary clue:
-                Robot = 2                                                           |
-                       |                                            "Five points of light guide
-                       v                                             the way at night.
-                   5 + 2                                             Trace your finger along the sky,
-                       |                                             and draw what the darkness hides."
-                       v                                                           |
-                  NUMBER = 7                                                       v
-                  SYMBOL = □                                               Player identifies
-                                                                              STAR
-                                                                                   |
-                                                                                   v
-                                                                         Star pattern changes
-                                                                         and NUMBER = 9
-                                                                                   |
-                                                                            SYMBOL = ○
-                                                                                   |
-                                                                                 CLICK
-                                                                                   |
-                                                                                   v
-                                                                            MIDDLE DRAWER
-                                                                               UNLOCKS
-                                                                                   |
-                                                                                   v
-                                                                              ORDER CLUE
-
-                                                                    "HE ALWAYS STARTED
-                                                                     AT THE BOTTOM."
-                                                                                   |
-                                                                                   v
-                                                                         THREE-DRAWER TABLE
-
-                                                                         Top drawer    □
-                                                                         Middle drawer ○
-                                                                         Bottom drawer △
-
-                                                                         Start at bottom:
-
-                                                                         △  ->  ○  ->  □
-                                                                         6      9      7
-                                                                                   |
-                                                                                   v
-                                                                             PADLOCK = 697
-                                                                                   |
-                                                                         +---------+---------+
-                                                                         |                   |
-                                                                      INCORRECT           CORRECT
-                                                                         |                   |
-                                                                       Retry             Stop timer
-                                                                                             |
-                                                                                             v
-                                                                                       ENDING CHECK
-                                                                                             |
-                                                                                  Compare player's time
-                                                                                  with Tommy's time
-                                                                                             |
-                                                                                  +----------+----------+
-                                                                                  |                     |
-                                                                               BEAT TIME          DID NOT BEAT
-                                                                                  |                     |
-                                                                               WIN ENDING          DARK ENDING
-                                                                                  |
-                                                                          Optional sound/bell
+    +----------------------+----------------------+----------------------+
+    |                      |                      |                      |
+    v                      v                      v                      v
+THREE-DRAWER TABLE      BUCKET / PIPE        PALLETS / PANEL         TOY SHELF
+    |                      |                      |                      |
+    |                      |                      |                 Five toys:
+    |                      |                      |                 Horse
+    |                      |                      |                 Rocket
+    |                      |                      |                 Duck
+    |                      |                      |                 Bear
+    |                      |                      |                 Robot
+    |                      |                      |                      |
+    |                      |                      |                 Can be examined
+    |                      |                      |                 immediately
+    |                      |                      |
+    |                      |                      v
+    |                      |                BINARY PANEL
+    |                      |                 16 8 4 2 1
+    |                      |                      |
+    |                      |                 Player toggles
+    |                      |                    lights
+    |                      |                      |
+    |                      |              +-------+-------+
+    |                      |              |               |
+    |                      |           INCORRECT        CORRECT
+    |                      |              |               |
+    |                      |         Panel remains       CLICK
+    |                      |           unsolved           |
+    |                      |                              v
+    |                      |                       TOP DRAWER
+    |                      |                         UNLOCKS
+    |                      |                              |
+    |                      |                              v
+    |                      |                     DUCK + ROBOT PHOTO
+    |                      |                              |
+    |                      |                       Crude + sign
+    |                      |                     between the toys
+    |                      |                              |
+    |                      |                              |
+    |                      v                              |
+    |              BUCKET / PIPE PUZZLE                   |
+    |                      |                              |
+    |                      v                              |
+    |             REVEALS FINAL-LOCK                      |
+    |                    CLUE                             |
+    |                      |                              |
+    |                      |                              |
+    +--> BOTTOM DRAWER     |                              |
+    |       |              |                              |
+    |       v              |                              |
+    |     OPEN             |                              |
+    |       |              |                              |
+    |       v              |                              |
+    |   TOMMY'S DIARY      |                              |
+    |       |              |                              |
+    |       +--> Day 4     |                              |
+    |       +--> Day 8     |                              |
+    |       +--> Day 12    |                              |
+    |       +--> Day 16    |                              |
+    |       +--> Day 19    |                              |
+    |       |              |                              |
+    |       |   Entries may be read                       |
+    |       |   in any order                              |
+    |       |                                             |
+    |       v                                             |
+    |     DAY 12                                          |
+    |       |                                             |
+    |       v                                             |
+    |   TWILIGHT TOY DERBY                                |
+    |       |                                             |
+    |       v                                             |
+    |   TOY PUZZLE DISCOVERED                             |
+    |       |                                             |
+    |       |   "arrange" command                         |
+    |       |   becomes available                         |
+    |       |                                             |
+    |       v                                             |
+    |   PLAYER ARRANGES TOYS <----------------------------+
+    |       |
+    |       |   Correct order:
+    |       |
+    |       |   1. Rocket
+    |       |   2. Robot
+    |       |   3. Horse
+    |       |   4. Bear
+    |       |   5. Duck
+    |       |
+    |   +---+-------------------+
+    |   |                       |
+    | INCORRECT               CORRECT
+    |   |                       |
+    | Light flickers         Heavy click
+    | violently             Light flickers
+    | then stops            then goes out
+    |                           |
+    |                           v
+    |                     ROOM BECOMES DARK
+    |                           |
+    |                  +--------+--------+
+    |                  |                 |
+    |                  v                 v
+    |              STAR FIELD       SWITCH PLATE
+    |              NOW VISIBLE      BEGINS TO GLOW
+    |                  |                 |
+    |                  |            Circular plate
+    |                  |            becomes relevant
+    |                  |
+    |                  v
+    |              STAR PUZZLE
+    |                  |
+    |             [TO BE BUILT]
+    |                  |
+    |                  v
+    |            MIDDLE DRAWER
+    |               UNLOCKS
+    |                  |
+    |                  v
+    |          REVEALS FINAL-LOCK
+    |                 CLUE
+    |                  |
+    |                  |
+    +------------------|-----------------------------------------+
+                       |                                         |
+                       |                                         |
+                       |                                    DRAIN
+                       |                                         |
+                       |                              Photograph beneath grate
+                       |                                         |
+                       |                              Tommy sitting in this room
+                       |                              with all five familiar toys
+                       |                                         |
+                       |                                         v
+                       |                              SUPPORTING TOY CLUE
+                       |                                         |
+                       |                                         |
+                       +--------------------+--------------------+
+                                            |
+                                            |
+                              FINAL NUMBER / CLUE PATHS
+                                            |
+                                            v
+                                  ALL THREE CLUES FOUND
+                                            |
+                                            v
+                                 FINAL PADLOCK PUZZLE
+                                            |
+                               Symbols beneath the dials
+                               establish the required
+                               number order
+                                            |
+                                            v
+                              PLAYER ENTERS COMBINATION
+                                            |
+                                    +-------+-------+
+                                    |               |
+                                  WRONG           CORRECT
+                                    |               |
+                              Lock remains      Padlock opens
+                                 closed              |
+                                                    v
+                                                  ESCAPE
+                                                    |
+                                                    v
+                                                  ENDING
 ```
 
 ### Optional Features if time
@@ -252,7 +214,7 @@ Due to the text adventure format, most puzzle interactions will compare player i
 
 The 5 light panel puzzle I designed was inspired by several courses I took over the summer that covered binary. So I thought it'd be a great nod to that. 
 
-The toy puzzle in my original Scratch game is a swapping mechanic but here it'll be a true or false based off of player input. The player will have to solve the riddle below to determine the order in which they belong for the duck, horse, bear, robot and rocket.
+For the toy puzzle in the text adventure version, I changed this into an input-based puzzle. The player enters the five toys in their chosen order. The program compares the input against the correct arrangement and provides environmental feedback depending on whether the attempt succeeds or fails.
 
 The Twilight Toy Derby
 
@@ -276,34 +238,60 @@ Riddle logic:
 - Rocket and Duck can fly, placing them at opposite ends.
 - Rocket and Robot are made of metal, placing them side by side.
 - Horse has hooves and must finish before Duck, establishing which flying toy is first and which is last.
-- Robot and Teddy run on two legs and have one racer between them.
+- Robot and Bear run on two legs and have one racer between them.
 
 Solution:
-Rocket, Robot, Horse, Teddy, Duck
+Rocket, Robot, Horse, Bear, Duck
 
 The star puzzle in my original Scratch project uses the mouse pointer to trace a shape in the stars. Here I've put in an ASCII illustration so the player can see where they need to go. Their input must say "star" in order to proceed. 
 
-The last main piece is the padlock. The player will have to solve all the puzzles in the room to find the digits 6, 9 and 7 and determine the order in which they belong. Each final number is associated with a shape through an environmental characteristic rather than an explicitly etched clue. The bucket has a triangular notch, the light switch has an unusual circular base plate, and the toy shelf uses square number labels. The final drawer clue tells the player to start at the bottom, establishing the order triangle, circle, square and therefore 6, 9, 7.
+The last main piece is the padlock. The player will have to solve all the puzzles in the room to find the digits 6, 9 and 7 and determine the order in which they belong. Each final number is associated with a shape through an environmental characteristic. The bucket has a triangular notch, the light switch has an unusual circular base plate, and the toy shelf uses square number labels. The pad lock tells the player in what order the numbers go based off circular plate = circle, triangle symbol in bucket and square labels on the shelf. Final combination is 6, 9, 7.
+
+### Command Keywords
+- help
+- quit
+- door
+- lock
+- bucket
+- pipe
+- hatch
+- table
+- top drawer
+- middle drawer
+- bottom drawer
+- pallets
+- panel
+- button
+- shelf
+- horse
+- rocket
+- duck
+- bear
+- robot
+- switch
+- light
+- drain
+- diary
+- day 4
+- day 8
+- day 12
+- day 16
+- day 19
+- arrange
+- stars
 
 ### Game State
-Need key words:
-door
-lock
-bucket
-pipe
-hatch
-table
-drawers
-pallets
-shelf
-horse
-rocket
-duck
-bear
-robot
-switch
-light
-drain
+
+Boolean variables are used to track the player's progress and control which interactions are currently available.
+
+- `panelDiscovered` - tracks whether the hidden binary panel has been found.
+- `topDrawerLocked` - controls access to the top drawer.
+- `middleDrawerLocked` - controls access to the middle drawer.
+- `light16On`, `light8On`, `light4On`, `light2On`, `light1On` - store the current state of each binary-panel light.
+- `diaryFound` - tracks whether the player has collected Tommy's diary.
+- `toyPuzzleDiscovered` - enables the toy puzzle after the relevant diary entry has been read.
+- `toyPuzzleSolved` - tracks completion of the toy arrangement puzzle.
+- `starsDiscovered` - enables interaction with the stars after the room becomes dark.
 
 ## Development Log
 
@@ -313,4 +301,17 @@ drain
 - Created initial project structure.
 - Need to investigate how to measure elapsed time in C.
 - Built the opening, player input, quit and help commands
+- Built the binary puzzle and table drawer interactions
+- Added game-state progression from the binary puzzle to the table.
+
+### 25 September 2026
+
+- Added Tommy's diary and individual readable diary entries.
+- Used Day 12 to gate discovery of the toy puzzle.
+- Implemented the toy arrangement puzzle with success and failure feedback.
+- Added game-state progression from the toy puzzle to the star puzzle.
+- Revised drawer contents and photograph clues.
+- Simplified the final padlock clue system by placing the symbols directly on the lock.
+- Added pauseGame() to game logic for timed narrative output.
+- Added initial examine stars interaction.
 

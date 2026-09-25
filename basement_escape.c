@@ -4,8 +4,11 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdbool.h>
 #include "directions.h"
 #include "objects.h"
+#include "game_logic.h"
+
 
 //function prototypes
 
@@ -16,7 +19,6 @@ void quitGame(char input[]);
 void convertToLowercase(char input[]);
 void getPlayerInput(char input[], int size);
 void help(char input[]);
-void pauseGame(int seconds);
 void gameOpen();
 
 
@@ -54,6 +56,10 @@ int main(void){
         examineLight(input);
         examineDrain(input);
         examinePanel(input);
+        readDiary(input);
+        pushButton(input);
+        checkToyPuzzle(input);
+        examineStars(input);
         help(input);
         quitGame(input);
 
@@ -80,14 +86,9 @@ void waitForEnter(void){ //waits for enter to be pressed
 }
 
 void gameInstructions(void){ //print the game instructions
-    printf("       HOW TO PLAY\n\nExplore the basement by typing commands.\n\nLook around using:\n\nlook north\nlook east\nlook south\nlook west\nlook up\nlook down\n\nOther useful commands:\n\nexamine [object]\nopen [object]\nread [object]\nuse [object]\n\nhelp: to show this message again\nquit: to quit the game\n\n");
+    printf("       HOW TO PLAY\n\nExplore the basement by typing commands. \nDo not use punctuation and only type one space in between each word.\n\nLook around using:\n\nlook north\nlook east\nlook south\nlook west\nlook up\nlook down\n\nOther useful commands:\n\nexamine [object]\nopen [object]\nread [object]\npush [object]\n\nhelp: to show this message again\nquit: to quit the game\n\n");
     printf("Press ENTER to continue...\n\n\n\n");
     waitForEnter();
-}
-
-void pauseGame(int seconds){
-    sleep(seconds);
-
 }
 
 void gameOpen(void){
@@ -97,8 +98,8 @@ void gameOpen(void){
     pauseGame(1);
     printf("Drip...\n\n");
     pauseGame(1);
-    printf("The sound cuts through the darkness.\n\n");
-    pauseGame(4);
+    printf("The sound cuts through the darkness...\n\n");
+    pauseGame(3);
     printf("Drip...\n\n");
     pauseGame(1);
     printf("Drip...\n\n");
@@ -106,20 +107,20 @@ void gameOpen(void){
     printf("Drip...\n\n");
     pauseGame(1);
     printf("Slowly, you become aware of it.\n\n");
-    pauseGame(4);
-    printf("Water.\n\n");
+    pauseGame(3);
+    printf("Water...\n\n");
     pauseGame(2);
     printf("You open your eyes.\n\n");
     pauseGame(3);
     printf("Nothing changes.\n\n");
     pauseGame(2);
-     printf("You try to remember where you are.\n\n");
+     printf("You try to remember where you are...\n\n");
     pauseGame(4);
     printf("Nothing.\n\n");
     pauseGame(1);
     printf("Panic sets in.\n\n");
     pauseGame(1);
-    printf("You call out.\n\n");
+    printf("You call out...\n\n");
     pauseGame(1);
     printf("Still nothing.\n\n");
     pauseGame(1);

@@ -16,3 +16,5 @@ void examineSwitch(char input[]);
 void examineLight(char input[]);
 void examineDrain(char input[]);
 void examinePanel(char input[]);
+void examineStars(char input[]);
+void readDiary(char input[]);

@@ -36,9 +36,9 @@ git remote -v This asks Git to show the remotes it knows about and their address
 git branch -M main renames the current branch to main. I didn’t need to use it because my branch was already named main.
 git push -u origin main pushed my local main branch and its commits to the GitHub repository. The -u set origin/main as the upstream branch, so future pushes can use git push.
 git push can be used regularly after the git push -u origin main command.
-.gitignore will ignore files so they won't be staged. "name/" → directory. "name" → file.
+.gitignore tells Git which untracked files and directories it should ignore. "name/" can be used for a directory and "name" for a file.
 git rm -r --cached name/ removes a whole directory recursively
-
+echo ".DS_Store" >> .gitignore echo ".DS_Store" → produce the text .DS_Store >> → append it to a file without overwriting what’s already there .gitignore → the file we’re appending it to
 
 I also learned that Git records an author name and email with each commit, and if these aren’t configured Git may infer them from the computer.
 
@@ -63,27 +63,29 @@ I needed to convert visual designs into ASCII art that would work within the ter
 
 ### What I learned
 
-[Add as we work.]
+I learned that visual designs need to be simplified when represented as ASCII art because the terminal is limited to text characters and spacing. I also learned that alignment can depend on the terminal’s monospaced character layout.
 
 ### How I applied it
 
-[Add as we work.]
+ASCII art for the star puzzle to be implemented.
 
 ## Syntax I learned in C
 
-learned about the #include <ctype.h> for case insenstive typing
+I learned about #include <ctype.h>, which provides character-handling functions such as tolower().
 
-learned about tolower to convert my strings to lower case for insensitive player input.
+I learned about tolower to convert my strings to lower case for insensitive player input.
 
-leanred about fgets() to get strings from the player input. fgets() normally stores the newline from pressing ENTER, so I check for '\n' at the end of the input and replace it with the null terminator '\0'.
+I learned about fgets() to get strings from the player input. fgets() normally stores the newline from pressing ENTER, so I check for '\n' at the end of the input and replace it with the null terminator '\0'.
 
-learned about #include <stdlib.h> that has the function exit(0);
+I learned about #include <stdlib.h>, which provides the exit() function. exit(0) terminates the program and indicates successful execution.
 
-learned about strcmp() which compares two strings. It returns 0 if the strings are equal, a negative value if str1 is less than str2, and a positive value if str1 is greater than str2.
+I learned about strcmp() which compares two strings. It returns 0 if the strings are equal, a negative value if str1 is less than str2, and a positive value if str1 is greater than str2.
+
+I learned that strncmp() can compare only the first specified number of characters in a string. This allowed me to recognise a general command while still using strcmp() to check for a specific correct input. For example, any input beginning with arrange  can be recognised as an attempt, while only the exact correct arrangement is accepted as the solution.
 
 I learned that scanf("%s") stops reading at whitespace, while fgets() can read a full line containing spaces. This makes fgets() more suitable for commands such as “look north”.
 
-learned about the library #include<unistd.h> so I could use the sleep() function for stylistic game pausing
+I learned about #include <unistd.h>, which provides the sleep() function on my system. I used this to add short pauses between narrative events.
 
 Once a C program is split across multiple source files, all required .c files must be compiled and linked together using: clang [SOURCE FILE] [SOURCE FILE] -o [EXECUTABLE NAME]
 
@@ -92,11 +94,14 @@ Once a C program is split across multiple source files, all required .c files mu
 
 I created a reusable player input function that reads full commands, removes the newline and converts the input to lowercase. I then used strcmp() to implement help and quit commands inside the main game loop.
 
+“How do I detect all possible wrong arrangements without writing every combination?” My research led me to use strncmp(), which provided the necessary tool to recognise any input beginning with "arrange " while still using strcmp() to check for the exact correct solution.
+
 ## Resources
 
 https://www.geeksforgeeks.org/c/fgets-function-in-c/
 https://www.geeksforgeeks.org/c/tolower-function-in-c/
 https://www.geeksforgeeks.org/cpp/ctype-hcctype-library-in-c-c-with-examples/
 https://www.geeksforgeeks.org/c/strcmp-in-c/
+https://www.geeksforgeeks.org/cpp/difference-strncmp-strcmp-c-cpp/
 
 

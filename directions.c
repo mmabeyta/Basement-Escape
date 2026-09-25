@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include "directions.h"
+#include "game_logic.h"
 
 void lookNorth(char input[]){ //this prints the description of the north direction
       if (strcmp(input, "look north") == 0){
@@ -14,8 +16,8 @@ void lookNorth(char input[]){ //this prints the description of the north directi
 
 void lookEast(char input[]){ //this prints the description of the East direction
     if (strcmp(input, "look east") == 0){
-        printf("You see a withered wooden side \033[1mtable\033[0m with 4 legs and 3 \033[1mdrawers\033[0m.\n");
-        printf("Next to it is a heap of rotting old \033[1mpallets\033[0m some in tact and some torn apart.\n\n");
+        printf("You see a withered wooden side \033[1mtable\033[0m with 4 legs and 3 drawers.\n");
+        printf("Next to it is a heap of rotting old \033[1mpallets\033[0m, some in tact and some torn apart.\n\n");
     }
 }
 
