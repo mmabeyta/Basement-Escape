@@ -98,7 +98,7 @@ void waitForEnter(void){ //waits for enter to be pressed
 }
 
 void gameInstructions(void){ //print the game instructions
-    printf("       HOW TO PLAY\n\nExplore the basement by typing commands. \nDo not use punctuation and only type one space in between each word.\n\nLook around using:\n\nlook north\nlook east\nlook south\nlook west\nlook up\nlook down\n\nOther useful commands:\n\nexamine [object]\nopen [object]\nread [object]\npush [object]\nenter [number]\n\nhelp: to show this message again\nquit: to quit the game\n\n");
+    printf("       HOW TO PLAY\n\nExplore the basement by typing commands. \nDo not use punctuation and only type one space in between each word.\n\nLook around using:\n\nlook north\nlook east\nlook south\nlook west\nlook up\nlook down\n\nOther useful commands:\n\nexamine [object]\nopen [object]\nread [object]\npush [object]\nenter [number]\narrange [object] [object] [object] [object] [object]\n\nhelp: to show this message again\nquit: to quit the game\n\n");
     printf("Press ENTER to continue...\n\n\n\n");
     waitForEnter();
 }
